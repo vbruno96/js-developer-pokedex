@@ -4,10 +4,11 @@ let offset = 0
 
 const pokeList = document.querySelector('#pokeList')
 const loadMore = document.querySelector('#loadMore')
+const detailModal = document.querySelector('#detail-modal')
 
 function pokemonComponent(pokemon) {
   return `
-    <li class="pokemon ${pokemon.type}">
+    <li class="pokemon ${pokemon.type}" onclick='openDetailModal(${JSON.stringify(pokemon)})'>
       <span class="number">#${pokemon.id}</span>
       <span class="name">${pokemon.name}</span>
 
@@ -46,4 +47,32 @@ function loadMorePokemons() {
   } else {
     loadData(offset, limit)
   }
+}
+
+function openDetailModal(pokemon) {
+  detailModal.classList.add(pokemon.type)
+  detailModal.innerHTML = `
+    <button class="detail-close" onclick="closeDetailModal()">×</button>
+    <div class="detail-content">
+      <div class="content-header">
+        <h4>${pokemon.name}</h4>
+        ${pokemon.types.map(type => `<span class='type ${type}' >${type}</span>`).join('')}
+      </div>
+      <img src="${pokemon.img}" alt="${pokemon.name}" />
+      <ul class="stats">
+        ${pokemon.stats.map(stat => (`
+          <li>
+            ${stat.stat_name}
+            <progress value='${stat.base_stat}' max="100" />
+          </li>
+        `)).join('')}
+      </ul>
+    </div>
+  `
+  detailModal.showModal()
+}
+
+function closeDetailModal() {
+  detailModal.removeAttribute('class')
+  detailModal.close()
 }

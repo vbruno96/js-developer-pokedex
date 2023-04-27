@@ -1,24 +1,134 @@
 * {
-    font-family: 'Roboto', sans-serif;
-    box-sizing: border-box;
+	font-family: 'Roboto', sans-serif;
+	box-sizing: border-box;
 }
 
 body {
-    background-color: #f6f8fc;
+	background-color: #f6f8fc;
 }
 
 .content {
-    width: 100vw;
-    height: 100vh;
-    padding: 1rem;
-    background-color: #fff;
+	width: 100vw;
+	height: 100vh;
+	padding: 1rem;
+	background-color: #fff;
+}
+
+#detail-modal {
+	position: relative;
+	min-width: 20rem;
+	margin: auto 0;
+	padding: 0;
+	border: none;
+	border-radius: 1rem;
+}
+
+#detail-modal .detail-close {
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+	background: transparent;
+	color: #fff;
+	border: none;
+	border-radius: .25rem;
+	font-size: 1.5rem;
+	outline: none;
+	cursor: pointer;
+}
+
+#detail-modal .detail-close:focus {
+	outline: 2px solid #b9b7cf;
+}
+
+#detail-modal .detail-content {
+	position: relative;
+	display: grid;
+	grid-template-columns: 1fr;
+	place-items: center;
+	gap: .5rem;
+	min-height: 17.5rem;
+	background: #fff;
+	margin-top: 14rem;
+	padding: 8rem 1rem 1rem;
+	border-radius: 1rem;
+	text-transform: capitalize;
+}
+
+#detail-modal .detail-content .content-header {
+	position: absolute;
+	top: -13rem;
+	left: 1rem;
+}
+
+#detail-modal .detail-content .content-header h4 {
+	margin: 0 0 .5rem;
+	color: #fff;
+	font-size: 1.5rem;
+}
+
+#detail-modal .detail-content .content-header .type {
+	color: #fff;
+	margin: 0 .25rem 0 0;
+	padding: .25rem .5rem;
+	border-radius: 1rem;
+	font-size: .625rem;
+	text-align: center;
+	filter: brightness(1.1);
+}
+
+#detail-modal .detail-content img {
+	position: absolute;
+	top: -12rem;
+	width: 70%;
+	height: 90%;
+}
+
+#detail-modal .detail-content .stats {
+	display: flex;
+	flex-direction: column;
+	gap: .5rem;
+	width: 100%;
+	padding: 0;
+	list-style: none;
+}
+
+#detail-modal .detail-content .stats li {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat(1fr);
+	place-items: center;
+	gap: .25rem;
+}
+
+#detail-modal .detail-content .stats li progress {
+	width: 100%;
+	appearance: none;
+	border-radius: 9999px;
+	overflow: hidden;
+}
+
+#detail-modal .detail-content .stats li progress::-webkit-progress-bar {
+	background: #6f38f6;
+	border: none;
+	outline: none;
+
+}
+
+#detail-modal .detail-content .stats li progress::-webkit-progress-value {
+	background: #77c850;
 }
 
 @media screen and (min-width: 992px) {
-    .content {
-        max-width: 992px;
-        height: auto;
-        margin: 1rem auto;
-        border-radius: 1rem;
-    }
+	.content {
+		max-width: 992px;
+		height: auto;
+		margin: 1rem auto;
+		border-radius: 1rem;
+	}
+}
+
+@media screen and (min-width: 321px) {
+	#detail-modal {
+		margin: auto;
+	}
 }
